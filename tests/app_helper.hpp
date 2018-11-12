@@ -14,11 +14,16 @@ typedef std::vector<std::string> input_t;
 struct TApp : public ::testing::Test {
     CLI::App app{"My Test Program"};
     input_t args;
+    bool ran{false};
 
     void run() {
+        if(ran)
+            app.clear();
+
         input_t newargs = args;
         std::reverse(std::begin(newargs), std::end(newargs));
         app.parse(newargs);
+        ran = true;
     }
 };
 

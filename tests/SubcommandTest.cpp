@@ -70,15 +70,12 @@ TEST_F(TApp, MultiSubFallthrough) {
     EXPECT_TRUE(*sub2);
 
     app.require_subcommand();
-
     run();
 
     app.require_subcommand(2);
-
     run();
 
     app.require_subcommand(1);
-
     EXPECT_THROW(run(), CLI::ExtrasError);
 
     args = {"sub1"};
